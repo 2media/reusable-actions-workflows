@@ -2,6 +2,10 @@ name: "Integrate"
 
 on:
   workflow_call:
+    secrets:
+      COMPOSER_GITHUB_TOKEN:
+        required: true
+        description: 'GitHub Token used to install private composer packages.'
 
 jobs:
   build:
@@ -23,18 +27,3 @@ jobs:
 
       - name: Create new Jigsaw Build
         run: composer run build:production
-
-  frontend-build:
-    if: github.actor == 'dependabot[bot]'
-    name: Frontend Build
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Install Frontend Dependencies
-        run: yarn install
-
-      - name: Build Frontend Assets
-        run: yarn prod
