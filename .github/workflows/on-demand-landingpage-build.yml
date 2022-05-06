@@ -1,0 +1,36 @@
+name: On Demand Build
+
+on:
+  workflow_call:
+    inputs:
+      commit_message:
+        description: 'Commit Message used for this new build.'
+        required: false
+        type: string
+        default: 'New On Demand Build'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 7.4
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, bcmath, intl
+
+      - name: Setup composer auth.json
+        run: composer config github-oauth.github.com ${{ secrets.COMPOSER_GITHUB_TOKEN }}
+
+      - uses: ramsey/composer-install@v2
+
+      - name: Create new Jigsaw Build
+        run: vendor/bin/jigsaw build production
+
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: ${{ inputs.commit_message }}
+          branch: main
