@@ -154,6 +154,29 @@ jobs:
     uses: 2media/reusable-actions-workflows/.github/workflows/release-drafter.yml@main
 ```
 
+## `sentry-release-tracking.yml`
+
+Workflow to notify Sentry about a new [release](https://docs.sentry.io/product/releases/).
+
+The example workflow below is triggerd by a [deployer](https://deployer.org/) deployment where an API request to the GitHub API is made with the `deployer_deployment` event type.
+
+```yaml
+# .github/workflows/sentry-release-tracking.yml
+name: Sentry Release Tracking
+
+on:
+  repository_dispatch:
+    types: [deployer_deployment]
+
+jobs:
+  track:
+    uses: 2media/reusable-actions-workflows/.github/workflows/sentry-release-tracking.yml@main
+    with:
+      project_name: 'todo-app'
+    secrets:
+      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+```
+
 ## `update-changelog.yml`
 
 Workflow to automatically update a projects `CHANGELOG.md` with the release notes of a new GitHub release.

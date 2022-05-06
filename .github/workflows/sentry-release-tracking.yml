@@ -1,0 +1,30 @@
+name: "Release Tracking"
+
+on:
+  workflow_call:
+    inputs:
+      project_name:
+        description: 'Sentry Project Name.'
+        required: true
+        type: string
+    secrets:
+      SENTRY_AUTH_TOKEN:
+        required: true
+        description: 'Sentry authentication token.'
+
+jobs:
+  release-tracking:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Create Sentry release
+        uses: getsentry/action-release@v1
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: 2media
+          SENTRY_PROJECT: ${{ inputs.project_name }}
+        with:
+          environment: ${{ github.event.client_payload.environment }}
+          set_commits: auto
