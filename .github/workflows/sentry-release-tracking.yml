@@ -7,6 +7,10 @@ on:
         description: 'Sentry Project Name.'
         required: true
         type: string
+      environment:
+        description: 'The environment this relase has been deployed to.'
+        required: false
+        default: ${{ github.event.client_payload.environment }}
     secrets:
       SENTRY_AUTH_TOKEN:
         required: true
@@ -26,5 +30,5 @@ jobs:
           SENTRY_ORG: 2media
           SENTRY_PROJECT: ${{ inputs.project_name }}
         with:
-          environment: ${{ github.event.client_payload.environment }}
+          environment: ${{ inputs.environment }}
           set_commits: auto
