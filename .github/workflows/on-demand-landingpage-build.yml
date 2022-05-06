@@ -8,6 +8,10 @@ on:
         required: false
         type: string
         default: 'New On Demand Build'
+    secrets:
+      COMPOSER_GITHUB_TOKEN:
+        required: true
+        description: 'GitHub Token used to install private composer packages.'
 
 jobs:
   build:
