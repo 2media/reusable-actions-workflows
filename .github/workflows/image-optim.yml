@@ -7,6 +7,7 @@ jobs:
   build:
     name: calibreapp/image-actions
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2

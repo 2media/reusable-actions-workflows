@@ -7,6 +7,7 @@ jobs:
   update_release_draft:
     if: github.actor != 'dependabot[bot]'
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - uses: release-drafter/release-drafter@v5
         env:
