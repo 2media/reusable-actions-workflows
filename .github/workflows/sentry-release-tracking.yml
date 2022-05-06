@@ -11,6 +11,7 @@ on:
         description: 'The environment this relase has been deployed to.'
         required: false
         default: ${{ github.event.client_payload.environment }}
+        type: string
     secrets:
       SENTRY_AUTH_TOKEN:
         required: true
