@@ -2,6 +2,10 @@ name: Auto Merge Dependabot Pull Requests
 
 on:
   workflow_call:
+    secrets:
+      MERGE_ME_GITHUB_TOKEN:
+        required: false
+        description: 'GitHub Token used to merge Pull Request.'
 
 jobs:
   auto-merge:
