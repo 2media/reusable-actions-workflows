@@ -14,5 +14,7 @@ jobs:
         if: ${{ github.event.workflow_run.conclusion == 'success' }}
         uses: ridedott/merge-me-action@v2
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Custom GITHUB_TOKEN is required in order to successfully merge dependabot
+          # pull requests when integrate workflow is green.
+          GITHUB_TOKEN: ${{ secrets.MERGE_ME_GITHUB_TOKEN }}
           PRESET: DEPENDABOT_MINOR
