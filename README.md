@@ -21,6 +21,8 @@ on:
 jobs:
   merge-me:
     uses: 2media/reusable-actions-workflows/.github/workflows/auto-merge-dependabot-pr.yml@main
+    secrets:
+      MERGE_ME_GITHUB_TOKEN: ${{ secrets.MERGE_ME_GITHUB_TOKEN }}
 ```
 
 ## `image-optim.yml`
