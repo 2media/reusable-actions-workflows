@@ -10,7 +10,8 @@ on:
       phpVersion:
         description: 'Version of PHP to be used'
         required: false
-        default: 8.0
+        type: string
+        default: '8.0'
 jobs:
   build:
     name: Build
