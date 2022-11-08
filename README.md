@@ -67,6 +67,8 @@ on:
 jobs:
     build:
         uses: 2media/reusable-actions-workflows/.github/workflows/integrate-landingpages-backend.yml@main
+        with:
+          phpVersion: 8.1
         secrets:
           COMPOSER_GITHUB_TOKEN: ${{ secrets.COMPOSER_GITHUB_TOKEN }}
 
