@@ -6,7 +6,11 @@ on:
       COMPOSER_GITHUB_TOKEN:
         required: true
         description: 'GitHub Token used to install private composer packages.'
-
+    inputs:
+      phpVersion:
+        description: 'Version of PHP to be used'
+        required: false
+        default: 8.0
 jobs:
   build:
     name: Build
@@ -19,7 +23,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.0
+          php-version: ${{ inputs.phpVersion }}
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, bcmath, intl
 
       - name: Setup composer auth.json
