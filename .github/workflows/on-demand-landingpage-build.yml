@@ -8,15 +8,15 @@ on:
         required: false
         type: string
         default: 'New On Demand Build'
+      phpVersion:
+        description: 'Version of PHP to be used'
+        required: false
+        type: string
+        default: '8.1'
     secrets:
       COMPOSER_GITHUB_TOKEN:
         required: true
         description: 'GitHub Token used to install private composer packages.'
-    phpVersion:
-      description: 'Version of PHP to be used'
-      required: false
-      type: string
-      default: '8.1'
 
 jobs:
   build:
