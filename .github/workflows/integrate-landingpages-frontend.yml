@@ -15,7 +15,7 @@ on:
 
 jobs:
   frontend-build:
-    if: github.actor == 'dependabot[bot]'
+    # if: github.actor == 'dependabot[bot]'
     name: Frontend Build
     runs-on: ubuntu-latest
     timeout-minutes: 5
