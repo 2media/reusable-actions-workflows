@@ -2,6 +2,16 @@ name: "Integrate"
 
 on:
   workflow_call:
+    secrets:
+      GH_PACKAGES_INSTALL_TOKEN:
+        required: false
+        description: 'GitHub Token used to install private NPM packages from GitHub Packages registry.'
+    inputs:
+      installsPrivatePackage:
+        description: 'Determine if private NPM packages from Github Packages registry should be installed.'
+        required: false
+        type: string
+        default: false
 
 jobs:
   frontend-build:
@@ -14,8 +24,25 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # Install frontend dependencies the ususal way, if no private NPM packages
+      # from GitHub Packages registry should be installed
       - name: Install Frontend Dependencies
+        if: inputs.installsPrivatePackage == false
         uses: bahmutov/npm-install@v1
+
+      # Add GitHub Packages registry to NPM, if private packages should be installed.
+      - uses: actions/setup-node@v3
+        if: inputs.installsPrivatePackage == true
+        with:
+          node-version: 16
+          registry-url: https://npm.pkg.github.com/
+
+      # Install frontend dependencies including private NPM packages.
+      - name: Install Frontend Dependencies
+        if: inputs.installsPrivatePackage == true
+        uses: bahmutov/npm-install@v1
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGES_INSTALL_TOKEN }}
 
       - name: Build Frontend Assets
         run: yarn prod
