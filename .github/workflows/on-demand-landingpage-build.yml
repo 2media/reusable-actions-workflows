@@ -12,7 +12,7 @@ on:
         description: 'Version of PHP to be used'
         required: false
         type: string
-        default: '8.1'
+        default: '8.2'
     secrets:
       COMPOSER_GITHUB_TOKEN:
         required: true
