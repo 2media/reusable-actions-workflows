@@ -7,10 +7,20 @@ jobs:
   nginx:
     runs-on: ubuntu-latest
     steps:
-      - name: Create comment on Pull Request
+      - name: Find Comment
+        uses: peter-evans/find-comment@v2
+        id: fc
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: This pull request updates a NGINX file.
+
+      - name: Create or update comment
         uses: peter-evans/create-or-update-comment@v3
         with:
+          comment-id: ${{ steps.fc.outputs.comment-id }}
           issue-number: ${{ github.event.pull_request.number }}
           body: |
             > **Note**
             > This pull request updates a NGINX file. Please review the changed file and make sure it works!
+          edit-mode: replace
