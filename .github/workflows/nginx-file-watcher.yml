@@ -1,0 +1,16 @@
+name: NGINX File Watcher
+
+on:
+  workflow_call:
+
+jobs:
+  nginx:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create comment on Pull Request
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            > **Note**
+            > This pull request updates a NGINX file. Please review the changed file and make sure it works!
