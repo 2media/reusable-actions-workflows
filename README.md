@@ -78,6 +78,8 @@ jobs:
 
 ## `nginx-file-watcher.yml`
 
+Workflow that notifies us when a pull request updates a NGINX file. Should encourage a better code review.
+
 ```yaml
 # .github/workflows/nginx-file-watcher.yml
 name: NGINX File Watcher
