@@ -76,6 +76,23 @@ jobs:
         uses: 2media/reusable-actions-workflows/.github/workflows/integrate-landingpages-frontend.yml@main
 ```
 
+## `nginx-file-watcher.yml`
+
+```yaml
+# .github/workflows/nginx-file-watcher.yml
+name: NGINX File Watcher
+
+on:
+  pull_request:
+    paths:
+      - 'nginx/**'
+
+jobs:
+  nginx:
+    uses: 2media/reusable-actions-workflows/.github/workflows/nginx-file-watcher.yml@main
+
+```
+
 ## `on-demand-landingpage-build.yml`
 
 Workflow to create a fresh build of a landingpage and push the build back to GitHub.   
