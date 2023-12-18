@@ -76,6 +76,25 @@ jobs:
         uses: 2media/reusable-actions-workflows/.github/workflows/integrate-landingpages-frontend.yml@main
 ```
 
+## `laravel-pint-fixer.yml`
+
+Workflow to run Laravel Pint and automatically fix code style violations. Changes are pushed back to the GitHub repository.
+
+```yaml
+# .github/workflows/laravel-pint-fixer.yml
+name: laravel-pint
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  laravel-pint:
+    uses: 2media/reusable-actions-workflows/.github/workflows/laravel-pint-fixer.yml@main
+```
+
 ## `nginx-file-watcher.yml`
 
 Workflow that notifies us when a pull request updates a NGINX file. Should encourage a better code review.
