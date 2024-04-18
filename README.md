@@ -177,6 +177,25 @@ jobs:
     uses: 2media/reusable-actions-workflows/.github/workflows/php-cs-fixer.yml@main
 ```
 
+## `rector.yml`
+
+Workflow to run [Rector](https://getrector.com/) in our apps.
+To prevent potential breaking changes, the workflow will create a new pull request with the changes made by Rector.
+
+We suggest you run the workflow on a schedule. Like for example once a month.
+
+```yaml
+# .github/workflows/rector.yml
+name: Rector
+
+on:
+  schedule:
+  - cron: '15 2 3 * *'
+
+jobs:
+  rector:
+    uses: 2media/reusable-actions-workflows/.github/workflows/rector.yml@main
+```
 ## `release-drafter.yml`
 
 Workflow to run [release-drafter](https://github.com/release-drafter/release-drafter) in our apps.
