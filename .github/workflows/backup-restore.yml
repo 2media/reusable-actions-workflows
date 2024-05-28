@@ -15,19 +15,19 @@ on:
     secrets:
       AWS_ACCESS_KEY_ID:
         required: true
-        description: 'GitHub Token used to merge Pull Request.'
+        description: 'AWS ACCESS KEY to download your backup'
       AWS_SECRET_ACCESS_KEY:
         required: true
-        description: 'GitHub Token used to merge Pull Request.'
+        description: 'AWS SECRET ACCESS KEY to download your backup'
       AWS_DEFAULT_REGION:
         required: true
-        description: 'GitHub Token used to merge Pull Request.'
+        description: 'AWS region your backup is located'
       AWS_BACKUP_BUCKET:
         required: true
-        description: 'GitHub Token used to merge Pull Request.'
+        description: 'Name of the AWS S3 bucket your backup is stored in.'
       BACKUP_ARCHIVE_PASSWORD:
         required: true
-        description: 'GitHub Token used to merge Pull Request.'
+        description: 'The password used to decrypt your backup.'
 
 jobs:
   backuip-restore:
