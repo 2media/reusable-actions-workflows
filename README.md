@@ -42,7 +42,7 @@ on:
 
 jobs:
   restore:
-    uses: 2media/reusable-workflows/.github/workflows/backup-restore.yml@main
+    uses: 2media/reusable-actions-workflows/.github/workflows/backup-restore.yml@main
     with:
       # Value of `APP_NAME` env variable. Used to locate backup on remote disk.
       app_name: 'My Laravel App'
