@@ -33,7 +33,7 @@ The passed `app_name` will be used as `APP_NAME` and will be used to find the la
 
 ```yml
 # .github/workflows/backup-restore.yml
-name: backup
+name: backup-restore
 
 on:
   workflow_dispatch:
@@ -46,6 +46,7 @@ jobs:
     with:
       # Value of `APP_NAME` env variable. Used to locate backup on remote disk.
       app_name: 'My Laravel App'
+      database_name: 'laravel_app'
       php_version: '8.3'
     secrets:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}

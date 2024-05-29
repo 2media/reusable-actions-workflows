@@ -7,6 +7,10 @@ on:
         description: 'Name of your application'
         required: true
         type: string
+      database_name:
+        description: 'Name of the database to be created'
+        required: true
+        type: string
       php_version:
         description: 'PHP version to be used.'
         required: true
@@ -39,7 +43,7 @@ jobs:
         image: mysql:latest
         env:
           MYSQL_ROOT_PASSWORD: password
-          MYSQL_DATABASE: laravel
+          MYSQL_DATABASE: ${{ inputs.database_path }}
         ports:
           - 3306:3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
