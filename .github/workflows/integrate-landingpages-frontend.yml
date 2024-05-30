@@ -34,7 +34,7 @@ jobs:
       - uses: actions/setup-node@v3
         if: inputs.installsPrivatePackage == 'true'
         with:
-          node-version: 16
+          node-version: 20
           registry-url: https://npm.pkg.github.com/
 
       # Install frontend dependencies including private NPM packages.
