@@ -24,6 +24,8 @@ jobs:
           php-version: ${{ inputs.phpVersion }}
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, bcmath, intl
 
+      - run: cp .env.example .env
+
       - uses: ramsey/composer-install@v2
 
       - name: Run Rector
