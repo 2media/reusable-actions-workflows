@@ -38,7 +38,7 @@ jobs:
           title: Apply Rector rules
           body: |
             This PR contains changes made by running [Rector](https://getrector.com/) on the codebase of this app.
-            Rector should break app code, but it can't be guaranteed. 
+            Rector should not break app code, but it can't be guaranteed. 
 
             Please review this PR carefully.
 
