@@ -57,9 +57,9 @@ jobs:
         with:
           php-version: ${{ inputs.php_version }}
 
-      - uses: ramsey/composer-install@v2
-
       - run: cp .env.example .env
+
+      - uses: ramsey/composer-install@v2
 
       - run: php artisan key:generate
 
