@@ -15,7 +15,7 @@ on:
         description: 'PHP version to be used.'
         required: true
         type: string
-        default: '8.2'
+        default: '8.4'
     secrets:
       AWS_ACCESS_KEY_ID:
         required: true

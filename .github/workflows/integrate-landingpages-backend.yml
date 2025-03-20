@@ -11,7 +11,7 @@ on:
         description: 'Version of PHP to be used'
         required: false
         type: string
-        default: '8.2'
+        default: '8.4'
 jobs:
   build:
     name: Build
