@@ -28,7 +28,7 @@ jobs:
         uses: getsentry/action-release@v1
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-          SENTRY_ORG: 2media
+          SENTRY_ORG: fl-fintech-e-gmbh
           SENTRY_PROJECT: ${{ inputs.project_name }}
         with:
           environment: ${{ inputs.environment }}
